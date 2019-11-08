@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> The Cipher </title>
+		<link type="text/css" rel="stylesheet" href="CSS/default.css">
+        <link type="text/css" rel="stylesheet" href="CSS/pro.css">
+        <link type="text/css" rel="stylesheet" href="CSS/color.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+	<body>
+
+		<!-- Navbar -->
+        <div class="qw-top">
+            <div class="qw-bar qw-black qw-card">
+                <a href="index.html" class="qw-bar-item qw-button qw-padding-large qw-blue">Home</a>
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Applications <i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="app_theCipher.html" class="qw-bar-item qw-button">The Cipher v1</a>
+                        <a href="app_theCipher_2.html" class="qw-bar-item qw-button">The Cipher v2</a>
+                        <!--<a href="app_theCipher.html" class="qw-bar-item qw-button">AI Playground</a>-->
+                    </div>
+                </div>
+
+
+				<!--<div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Min-Max AI<i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="#" class="qw-bar-item qw-button">Tic-Tac-Toe</a>
+                        <a href="#" class="qw-bar-item qw-button">Chess</a>
+                    </div>
+                </div>-->
+
+                <!--
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Neural Network AI<i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+
+                    </div>
+                </div>
+                -->
+
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Web <i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="web-blaster_master.html" class="qw-bar-item qw-button">Blaster Master</a>
+                        <a href="web-temp_con.html" class="qw-bar-item qw-button">Temperture Converter</a>
+                    </div>
+                </div>
+
+                <!--Playgrounds-->
+                <!--Unreal-->
+                    <!--Marble Madness-->
+                    <!--N-Body-->
+                    <!--Rocket League-->
+                <!--Java-->
+                <!--Arduino-->
+                <a href="http://support.quantumwolf.com" class="qw-bar-item qw-button qw-padding-large qw-hide-small">Support</a>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="qw-bar-block qw-black qw-hide qw-hide-large qw-hide-medium qw-top" style="margin-top:46px">
+            <a href="apps.html" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Applications</a>
+            <a href="web.html" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Web</a>
+            <a href="http://support.quantumwolf.com" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Support</a>
+        </div>
+
+        <center>
+            <div class="qw-container qw-center" style="margin-top: 50px; padding-bottom: 25px; background-color: #e6e6e6">
+				<div class="qw-bar qw-black qw-card">
+					<a class="qw-bar-item qw-button qw-padding-large qw-hide-medium qw-hide-large qw-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				</div>
+
+                <h1> The Cipher v2 </h1>
+                <img src="Images/Apps/theCipher2/appIcon.png" class="qw-round" alt="App Icon" style="max-width: 25%;">
+                <p>Updated Version of The Cipher. Better UI and more Ciphers!</p>
+
+                <a href="https://itunes.apple.com/us/app/the-cipher/id1297082268?ls=1&mt=8" target="_blank"><img src="Images/Apps/appStore/Download_on_the_App_Store_Badge.svg" style="min-height: 10mm; min-width: 40mm;"></a>
+            </div>
+            <div class="qw-container" style="padding-bottom: 25px;">
+                <h1>Ciphers</h1>
+				<p>Version 2 added multiple new ciphers. Also check out the new automatic decryption without the key on the ceaser shift and monoalphabtic subsitution ciphers. </p>
+				<div style="padding-bottom: 50px"></div>
+
+				<div class="qw-row-padding qw-center">
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Easy to Use Table View</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/ciphers.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Rail Fence</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/railFence.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Scytale</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/scytale.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Ceaser Shift</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/ceaserShift.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Subsitution</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/subsitution.png" style="width:90%">
+						</div>
+					</div>
+
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Vigenere</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/vigenere.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Enigma Rotors</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/enigma_rotors.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Enigma Output</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/enigma_output.png" style="width:90%">
+						</div>
+					</div>
+				</div>
+            </div>
+
+            <div class="qw-container" style="padding-bottom: 25px; background-color: #e6e6e6">
+                <h1>Automatic Decryption</h1>
+				<p>Version 2 now has the ablity to decrypt ciphers even without knowing the key! </p>
+
+				<div class="qw-row-padding qw-center">
+					<div class="qw-quarter">
+						<br>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Rail Fence</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/ceaserShift_auto.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Scytale</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/ciphers/subsitution_auto.png" style="width:90%">
+						</div>
+					</div>
+				</div>
+            </div>
+
+			<div class="qw-container" style="padding-bottom: 25px;">
+                <h1>Cryptanalysis</h1>
+				<p>Have a secrete message in need of decrypting, but you don't have the key? Version two can help with cryptanalysis tools. </p>
+				<div class="qw-row-padding qw-center">
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Easy to Use Table View</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/analysis.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Letter Frequancy</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/letterFreq.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>N-Gram Frequancy</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/nGramFreq.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Word Frequancy</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/wordFreq.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Reapted Letters</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/repeatedLetters.png" style="width:90%">
+						</div>
+					</div>
+
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Index of Coincidence</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/indexOfCoincidence.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Fitness Measure</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/analysis/fitnessMeasure.png" style="width:90%">
+						</div>
+					</div>
+				</div>
+            </div>
+
+            <div class="qw-container" style="padding-bottom: 25px; background-color: #e6e6e6">
+                <h1>Tools</h1>
+				<p>Version two redesings the modular calculator and adds even more tools such as a Random Generator </p>
+				<div class="qw-row-padding qw-center">
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Easy to Use Table View</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/tools/tools.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Rail Fence</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/tools/mod.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Random Number</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/tools/random_num.png" style="width:90%">
+						</div>
+					</div>
+
+					<div class="qw-quarter">
+						<div class="qw-card">
+							<div class="qw-container">
+								<h5>Random Text</h5>
+							</div>
+							<img src="Images/Apps/theCipher2/tools/random_text.png" style="width:90%">
+						</div>
+					</div>
+				</div>
+            </div>
+        </center>
+
+		<!-- Footer -->
+		<footer class="qw-container qw-padding-64 qw-center qw-black qw-xlarge">
+			<a href="https://github.com/Dragon11000" target="_blank"><i class="fa fa-github"></i></a>
+			<a href="https://apps.apple.com/us/developer/logan-richards/id1439094062" target="_blank"><i class="fa fa-apple"></i></a>
+		  	<a href="https://www.linkedin.com/in/logan-richards-a26b3078/" target="_blank"><i class="fa fa-linkedin"></i></a>
+		</footer>
+
+		<script>
+		var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+		  var i;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = x.length}
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";
+		  }
+		  x[slideIndex-1].style.display = "block";
+		}
+
+		// Used to toggle the menu on small screens when clicking on the menu button
+		function myFunction() {
+			var x = document.getElementById("navDemo");
+			if (x.className.indexOf("qw-show") == -1) {
+				x.className += " qw-show";
+			} else {
+				x.className = x.className.replace(" qw-show", "");
+			}
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		var modal = document.getElementById('ticketModal');
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		</script>
+	</body>
+</html>

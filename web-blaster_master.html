@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html onmousemove="target()" onkeydown="pause(event)">
+    <head>
+        <title> Blaster Master </title>
+        <title> Quantum Wolf </title>
+        <link type="text/css" rel="stylesheet" href="CSS/default.css">
+        <link type="text/css" rel="stylesheet" href="CSS/pro.css">
+        <link type="text/css" rel="stylesheet" href="CSS/color.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            canvas {
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body style="padding-bottom: 50px">
+        <!-- Navbar -->
+        <div class="qw-top">
+            <div class="qw-bar qw-black qw-card">
+                <a href="index.html" class="qw-bar-item qw-button qw-padding-large qw-blue">Home</a>
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Applications <i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="app_theCipher.html" class="qw-bar-item qw-button">The Cipher v1</a>
+                        <a href="app_theCipher_2.html" class="qw-bar-item qw-button">The Cipher v2</a>
+                        <!--<a href="app_theCipher.html" class="qw-bar-item qw-button">AI Playground</a>-->
+                    </div>
+                </div>
+
+
+				<!--<div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Min-Max AI<i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="#" class="qw-bar-item qw-button">Tic-Tac-Toe</a>
+                        <a href="#" class="qw-bar-item qw-button">Chess</a>
+                    </div>
+                </div>-->
+
+                <!--
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Neural Network AI<i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+
+                    </div>
+                </div>
+                -->
+
+                <div class="qw-dropdown-hover qw-hide-small">
+                    <button class="qw-padding-large qw-button" title="More">Web <i class="fa fa-caret-down"></i></button>
+                    <div class="qw-dropdown-content qw-bar-block qw-card-4">
+                        <a href="web-blaster_master.html" class="qw-bar-item qw-button">Blaster Master</a>
+                        <a href="web-temp_con.html" class="qw-bar-item qw-button">Temperture Converter</a>
+                    </div>
+                </div>
+
+                <!--Playgrounds-->
+                <!--Unreal-->
+                    <!--Marble Madness-->
+                    <!--N-Body-->
+                    <!--Rocket League-->
+                <!--Java-->
+                <!--Arduino-->
+                <a href="http://support.quantumwolf.com" class="qw-bar-item qw-button qw-padding-large qw-hide-small">Support</a>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="qw-bar-block qw-black qw-hide qw-hide-large qw-hide-medium qw-top" style="margin-top:46px">
+            <a href="apps.html" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Applications</a>
+            <a href="web.html" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Web</a>
+            <a href="http://support.quantumwolf.com" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">Support</a>
+            <a href="about.html" class="qw-bar-item qw-button qw-padding-large" onclick="myFunction()">About</a>
+        </div>
+
+        <center style="margin-top: 50px;">
+            <h1> Blaster Master </h1>
+            <p>A game I created in 2015 for a project in Introduction to Programing.</p>
+            <canvas id="context" width="400" height="550px" style="border:1px solid #000000;" onmousedown="hit()"> </canvas>
+            <br>
+            <button onclick="cheat()"> Cheat </button>
+        </center>
+        <br>
+        <strong style="text-align: center"> <p> Instuctions </p></strong>
+        <ul>
+            <li style="margin-left: 400px;"> Click the ball with the mouse. </li>
+            <li style="margin-left: 400px;"> Each time you miss the ball you loss a live. </li>
+            <li style="margin-left: 400px;"> Each time you hit the ball, the ball changes color and moves faster. </li>
+            <li style="margin-left: 400px;"> Five hit, equals a new level. </li>
+            <li style="margin-left: 400px;"> Complete 5 levels to with the game. </li>
+            <li style="margin-left: 400px;"> Hit 'p' to pasue the game. </li>
+        </ul>
+
+        <!-- Footer -->
+        <footer class="qw-container qw-padding-64 qw-center qw-black qw-xlarge">
+			<a href="https://github.com/Dragon11000" target="_blank"><i class="fa fa-github"></i></a>
+			<a href="https://apps.apple.com/us/developer/logan-richards/id1439094062" target="_blank"><i class="fa fa-apple"></i></a>
+		  	<a href="https://www.linkedin.com/in/logan-richards-a26b3078/" target="_blank"><i class="fa fa-linkedin"></i></a>
+		</footer>
+
+        <script>
+            var ball, background, lineX, lineY, circle, button, timer, text, heart;
+
+            //X and Y Varible's
+            var ballX = 100;
+            var ballY = 100;
+
+            var targetX = 12;
+            var targetY = 12;
+
+            var mouseX = 0;
+            var mouseY = 0;
+
+            var dx = 4;
+            var dy = 4;
+
+            //Radius
+            var r = 40;
+
+            //Booleans
+            var booleanPlayGame = 0;
+            var booleanContinueGame = 1;
+            var booleanHighScore = 1;
+            var startGame = 1;
+            var booleanStartGame = 1;
+            var booleanGameover = 1;
+            var booleanPause = 0;
+
+            //Color
+            var color = ["#ffffff", "#ff00ff", "#ffff00", "#ff0000", "#000000"];
+            var colorA = 0;
+
+            //Stats
+            var lives = 5;
+            var hits = 0;
+            var level = 1;
+            var score = 0;
+            var scoreMultiplyer = 10;
+            var multiplyer = 1.1;
+            var highscoreA = 0;
+            var highscoreB = 13595489841;
+
+            var context = document.getElementById("context");
+
+            //Width and Height
+            var width = context.width;
+            var height = context.height;
+
+            //First Frame
+            function start(){
+                background = context.getContext("2d");
+                lineX = context.getContext("2d");
+                lineY = context.getContext("2d");
+                circle = context.getContext("2d");
+                targetHit = context.getContext("2d");
+                ball = context.getContext("2d");
+                button = context.getContext("2d");
+                text = context.getContext("2d");
+                heart = context.getContext("2d");
+
+                drawBackground();
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2 - 40, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2 + 40, 120, 30);
+
+                text.fillStyle = "#000000";
+                text.font = "32px Comic Sans MS";
+                text.fillText("Blaster Master", width/2 - 110, 34);
+
+                text.fillStyle = "#ffffff";
+                text.font = "18px Comic Sans MS";
+                text.fillText("Play Game", width/2 - 40, height/2 - 18);
+                text.fillText("Contiun Game", width/2 - 55, height/2 + 25);
+                text.fillText("Highscores", width/2 - 45, height/2 + 63);
+            }
+            //Level Select Frame
+            function levelSelcet() {
+                drawBackground();
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2 - 40, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 60, height/2 + 40, 120, 30);
+
+                text.fillStyle = "#ffffff";
+                text.font = "18px Comic Sans MS";
+                text.fillText("Easy", width/2 - 20, height/2 - 18);
+                text.fillText("Medium", width/2 - 30, height/2 + 25);
+                text.fillText("Hard", width/2 - 20, height/2 + 63);
+            }
+            //Highscore Frame
+            function highscores() {
+                drawBackground();
+                text.fillStyle = "#ffffff";
+                text.font = "24px Comic Sans MS";
+                text.fillText("Your Highscore: " + Math.round(highscoreA), width/2 - 100, height/2 - 50);
+                text.font = "18px Comic Sans MS";
+                text.fillText("All Time Highscoore: " + Math.round(highscoreB), width/2 - 150, height/2 + 25);
+            }
+            //Starts the Timer
+            function game() {
+                timer = setInterval(function(){draw()}, 20);
+            }
+            //Sets Mouse X, and Y every time the mouse is moved
+            function target() {
+                targetX = event.x - context.offsetLeft;
+                targetY = event.y - context.offsetTop;
+            }
+            //Runs when the mouse is clicked
+            function hit() {
+                mouseX = event.x - context.offsetLeft;
+                mouseY = event.y - context.offsetTop;
+
+                //Start Screen
+                if(booleanPlayGame == 0) {
+                    if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 - 40 && mouseY <= height/2 - 10) {
+                        level = 1;
+                        lives = 5;
+                        dx = 4;
+                        dy = 4;
+                        ballX = 100;
+                        ballY = 100;
+                        multiplyer = 1.1;
+                        colorA = 0;
+                        hits = 0;
+
+                        if(score > highscoreA) {
+                            highscoreA = score;
+                            score = 0;
+                        }
+                        else {
+                            score = 0;
+                        }
+
+                        levelSelcet();
+                        booleanPlayGame = 1;
+                        startGame = 0;
+                    }
+                    else if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 && mouseY <= height/2 + 30) {
+                        lives = 5;
+                        dx = 4;
+                        dy = 4;
+                        ballX = 100;
+                        ballY = 100;
+                        colorA = 0;
+                        hits = 0;
+
+                        if(score > highscoreA) {
+                            highscoreA = score;
+                            score = 0;
+                        }
+                        else {
+                            score = 0;
+                        }
+
+                        booleanStartGame = 0;
+                        booleanPlayGame = 1;
+                        game();
+                    }
+                    else if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 + 40 && mouseY <= height/2 + 70) {
+                        booleanPlayGame = 1;
+                        booleanHighScore = 0;
+                        highscores();
+                    }
+                }
+                //Level Select
+                else if(startGame == 0) {
+                    if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 - 40 && mouseY <= height/2 - 10) {
+                        r = 50;
+                        startGame = 1;
+                        booleanStartGame = 0;
+                        game();
+                    }
+                    else if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 && mouseY <= height/2 + 30) {
+                        r = 40;
+                        startGame = 1;
+                        booleanStartGame = 0;
+                        game();
+                    }
+                    else if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 + 40 && mouseY <= height/2 + 70) {
+                        r = 30;
+                        startGame = 1;
+                        booleanStartGame = 0;
+                        game();
+                    }
+                }
+                //Play Game
+                else if(booleanStartGame == 0) {
+                    if(mouseX <= ballX + r/2 && mouseX >= ballX - r/2) {
+                        hits++;
+                        colorA++;
+                        dx *= multiplyer;
+                        dy *= multiplyer;
+                        score += scoreMultiplyer;
+                        scoreMultiplyer *= multiplyer;
+                        var ran = Math.random();
+
+                        if(ran > 0.5) {
+                            dy = -dy;
+                        }
+                        else {
+                            dx = -dx;
+                        }
+
+                        if(hits == 5 || hits == 10 || hits == 15 || hits == 20 || hits == 25 || hits == 30 || hits == 35 || hits == 40 || hits == 45) {
+                            clearInterval(timer);
+                            newLevel();
+                        }
+                        else if(hits == 50) {
+                            clearInterval(timer);
+                            booleanStartGame = 1;
+                            booleanGameover = 0;
+                            endGame();
+                        }
+
+                    }
+                    else {
+                        lives--;
+                        if(lives == 0) {
+                            clearInterval(timer);
+                            booleanStartGame = 1;
+                            booleanGameover = 0;
+                            gameOver();
+                        }
+                    }
+                }
+                //Gameover
+                else if(booleanGameover == 0) {
+                    if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= 400 - 30 && mouseY <= 400 + 30) {
+                        level = 1;
+                        lives = 5;
+                        dx = 4;
+                        dy = 4;
+                        ballX = 100;
+                        ballY = 100;
+                        multiplyer = 1.1;
+                        colorA = 0;
+                        hits = 0;
+
+                        if(score > highscoreA) {
+                            highscoreA = score;
+                            score = 0;
+                        }
+                        else {
+                            score = 0;
+                        }
+
+                        booleanGameover = 1;
+                        booleanStartGame = 0;
+                        game();
+                    }
+                    else if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= 450 -30 && mouseY <= 450 + 30) {
+                        level = 1;
+                        lives = 5;
+                        dx = 4;
+                        dy = 4;
+                        ballX = 100;
+                        ballY = 100;
+                        multiplyer = 1.1;
+                        colorA = 0;
+
+                        if(score > highscoreA) {
+                            highscoreA = score;
+                            score = 0;
+                        }
+                        else {
+                            score = 0;
+                        }
+
+                        booleanGameover = 1;
+                        booleanPlayGame = 0;
+                        start();
+                    }
+                }
+                //Pause
+                else if(booleanPause == 1) {
+                    if(mouseX >= width/2 - 60 && mouseX <= width/2 + 60 && mouseY >= height/2 && mouseY <= height/2 + 30) {
+
+                        if(score > highscoreA) {
+                            highscoreA = score;
+                            score = 0;
+                        }
+                        else {
+                            score = 0;
+                        }
+
+                        booleanPlayGame = 0;
+                        booleanStartGame = 1;
+                        booleanPause = 0;
+                        start();
+                    }
+                }
+            }
+            //Pause
+            function pause(key) {
+                var character = key.keyCode || key.which;
+                if(character == 80) {
+                    if(booleanPause == 0 && booleanStartGame == 0) {
+                        booleanStartGame = 1;
+                        booleanPause = 1;
+
+                        background.save();
+                        background.fillStyle = "#000000";
+                        background.globalAlpha = 0.7;
+                        background.fillRect(0, 0, context.width, context.height);
+                        background.restore();
+
+                        text.fillStyle = "#ffffff";
+                        text.font = "32px Comic Sans MS";
+                        text.fillText("Pause!", context.width/2 - 40, context.width/2);
+
+                        button.fillStyle = "#ff0000";
+                        button.fillRect(width/2 - 60, height/2, 120, 30);
+
+                        text.fillStyle = "#ffffff";
+                        text.font = "18px Comic Sans MS";
+                        text.fillText("Main Memu", width/2 - 50, height/2 + 20);
+
+                        clearInterval(timer);
+                    }
+                    else if(booleanPause == 1) {
+                        booleanStartGame = 0;
+                        game();
+                        booleanPause = 0;
+                    }
+                }
+            }
+            //Draws every thing (Also on timer)
+            function draw(){
+                checkWalls();
+
+                drawBackground();
+
+                ball.fillStyle = color[colorA];
+                ball.beginPath();
+                ball.arc(ballX, ballY, r/2, 0, 2*Math.PI);
+                ball.strokeStyle = color[colorA];
+                ball.stroke();
+                ball.fill();
+
+                ballX += dx;
+                ballY += dy;
+
+                if(targetX < 0 - r || targetX > context.width + r || targetY < 0 - r || targetY > context.height + r) {
+
+                }
+                else {
+                    circle.beginPath();
+                    circle.arc(targetX, targetY, r, 0, 2*Math.PI);
+                    circle.strokeStyle = "#000000";
+                    circle.stroke();
+
+                    circle.beginPath();
+                    circle.arc(targetX, targetY, r/2, 0, 2*Math.PI);
+                    circle.strokeStyle = "#000000";
+                    circle.stroke();
+
+                    circle.beginPath();
+                    circle.arc(targetX, targetY, r/4, 0, 2*Math.PI);
+                    circle.strokeStyle = "#000000";
+                    circle.stroke();
+
+                    lineX.strokeStyle = "#000000";
+                    lineX.fillStyle = "#000000";
+                    lineX.moveTo(targetX, targetY - r);
+                    lineX.lineTo(targetX, targetY + r);
+                    lineX.stroke();
+
+                    lineY.strokeStyle = "#000000";
+                    lineY.fillStyle = "#000000";
+                    lineY.moveTo(targetX - r, targetY);
+                    lineY.lineTo(targetX + r, targetY);
+                    lineY.stroke();
+                }
+
+                text.fillStyle = "#000000";
+                text.font = "18px Comic Sans MS";
+                text.fillText("Score: " + Math.round(score), width/2 - 30, 45);
+                text.fillText("Level " + level, width-60, 20);
+
+                //Make This Heart PNG
+                heart.fillText("Lives: " + lives, 5, 20);
+            }
+            //Makes sure the wall bounses of the walls
+            function checkWalls(){
+                // Bounce off right wall
+                if(ballX + r/2 > width-25){
+                    //hitSideSound.play();
+                    dx = -dx;
+                }
+
+                // Bounce off left wall
+                if(ballX - r/2 < 25){
+                    //hitSideSound.play();
+                    dx = -dx;
+                }
+
+                // Bounce off bottom wall
+                if(ballY + r/2 > height-25){
+                    //hitSideSound.play();
+                    dy = -dy;
+                }
+
+                // Bounce off top wall
+                if(ballY - r/2 < 75){
+                    //hitSideSound.play();
+                    dy = -dy;
+                }
+            }
+            //The frames inbetween levels
+            function newLevel(){
+                drawBackground();
+
+                level++;
+                lives++;
+                dx = 4;
+                dy = 4;
+                ballX = 100;
+                ballY = 100;
+                multiplyer += 0.1;
+                colorA = 0;
+
+                text.fillStyle = "#000000";
+                text.font = "32px Comic Sans MS";
+                text.fillText("Level " + level, context.width/2 - 50, 200);
+                text.font = "24px Comic Sans MS";
+                text.fillText("Score: " + Math.round(score), context.width/2 - 50, 250);
+
+                setTimeout("game()", 2000);
+            }
+            //The Fremes that tells you, you won the game
+            function endGame() {
+                drawBackground();
+
+                text.fillStyle = "#000000";
+                text.font = "32px Comic Sans MS";
+                text.fillText("You Won the Game!", context.width/2 - 100, 150);
+                text.font = "24px Comic Sans MS";
+                text.fillText("Score: " + Math.round(score), context.width/2 - 50, 200);
+                text.fillText("+Lives: " + Math.round(lives) + " x 10 ", context.width/2 - 70, 250);
+
+                score += lives*10;
+                if(score > highscoreA) {
+                    highscoreA = score;
+                }
+
+                text.fillText("New Score: " + Math.round(score), context.width/2 - 70, 300);
+                text.fillText("Your High Score: " + Math.round(highscoreA), context.width/2 - 100, 350);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 50, 400, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 50, 450, 120, 30);
+
+                text.fillStyle = "#ffffff";
+                text.font = "18px Comic Sans MS";
+                text.fillText("Retry", width/2 - 15, 400 + 22);
+                text.fillText("Main Menu", width/2 - 33, 450+22);
+            }
+            //The Frame that tells you, you have lost the game
+            function gameOver() {
+                drawBackground();
+
+                text.fillStyle = "#000000";
+                text.font = "32px Comic Sans MS";
+                text.fillText("Game Over", context.width/2 - 85, 150);
+                text.font = "24px Comic Sans MS";
+                text.fillText("Score: " + Math.round(score), context.width/2 - 50, 200);
+                text.fillText("+Lives: " + Math.round(lives) + " x 10 ", context.width/2 - 70, 250);
+
+                score += lives*10;
+                if(score > highscoreA) {
+                    highscoreA = score;
+                }
+
+                text.fillText("New Score: " + Math.round(score), context.width/2 - 70, 300);
+                text.fillText("Your High Score: " + Math.round(highscoreA), context.width/2 - 100, 350);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 50, 400, 120, 30);
+
+                button.fillStyle = "#ff0000";
+                button.fillRect(width/2 - 50, 450, 120, 30);
+
+                text.fillStyle = "#ffffff";
+                text.font = "18px Comic Sans MS";
+                text.fillText("Retry", width/2 - 15, 400 + 22);
+                text.fillText("Main Menu", width/2 - 33, 450+22);
+            }
+            //The Background Function
+            function drawBackground() {
+                var startCircle = context.width*1.5;
+
+                //Felt
+                background.fillStyle = "#00cc00";
+                background.fillRect(0, 0, context.width, context.height);
+
+                //Stat
+                background.fillStyle = "#ffffff";
+                background.fillRect(0, 0, context.width, 50);
+
+                //Frame
+                background.fillStyle = "#996633";
+                background.fillRect(0, 50, context.width, 25);
+
+                background.fillStyle = "#996633";
+                background.fillRect(0, context.height-25, context.width, 50);
+
+                background.fillStyle = "#996633";
+                background.fillRect(0, 50, 25, context.height);
+
+                background.fillStyle = "#996633";
+                background.fillRect(context.width-25, 50, 25, context.height);
+            }
+            function cheat() {
+                lives += 100000000;
+            }
+            start();
+        </script>
+    </body>
+</html>
