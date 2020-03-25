@@ -1,1 +1,1 @@
-Click [Here](https://sdrahcirLog.github.io) to view site
+Click [Here](https://Logarithm-1.github.io) to view site
